@@ -46,7 +46,6 @@
         }
         public sendNotification(_name:string,_note:Object=null):void
         {
-            //console.info("name:",_name);
             for(var i in this.instanceMediator){
                 var _mediator = this.instanceMediator[i];
                 var _len = _mediator.listNotificationInterests().length;
@@ -60,13 +59,9 @@
                     }
                 }
             }
-
-            if(this.instanceCommand[_name]){
-                //console.info(_name,this.instanceCommand[_name]);
-
+            if(this.instanceCommand[_name]!=null){
                 var commandClassRef = this.instanceCommand[_name];
                 var commandInstance = new commandClassRef(this);
-                //console.info("new",commandClassRef)
                 commandInstance.excute(_note);
             }
         }

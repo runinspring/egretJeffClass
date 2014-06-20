@@ -1,13 +1,13 @@
 /**
  * Created by 张宇 runinspring@gmail.com on 14-4-16.
  */
+/// <reference path="Facade.ts"/>
  module mvc{
 	export class Mediator{
 		public mediatorName:string;
         public container:egret.DisplayObjectContainer;
-        public facade:Object;
+        public facade:Facade;
         constructor(_name:string,_viewCompmnet){
-            this.facade = new Object();
             this.mediatorName = _name;
             this.container = _viewCompmnet;
         }
