@@ -6,7 +6,7 @@
 module {
     export class ${NAME} {
         constructor() {
+            super();
         }
     }
 }
-
