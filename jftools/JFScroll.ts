@@ -58,12 +58,11 @@ module jftools{
 
         private addListeners():void{
             this.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.mouseDown,this);
+            this.stage.addEventListener(egret.Event.LEAVE_STAGE,this.leaveStage,this);
         }
         private removeListeners():void{
             this.removeEventListener(egret.TouchEvent.TOUCH_BEGIN,this.mouseDown,this);
-            this.removeEventListener(egret.TouchEvent.TOUCH_END,this.mouseUp,this);
-            this.removeEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE,this.mouseUp,this);
-            this.removeEventListener(egret.TouchEvent.TOUCH_MOVE,this.mouseMove,this);
+            this.leaveStage();
         }
         private mouseDown(e:egret.TouchEvent):void{
             if(!this.touchEnabled){return;}
@@ -104,9 +103,7 @@ module jftools{
             this.moveList();
         }
         private mouseUp(e:egret.TouchEvent):void{
-            this.removeEventListener(egret.TouchEvent.TOUCH_END,this.mouseUp,this);
-            this.removeEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE,this.mouseUp,this);
-            this.removeEventListener(egret.TouchEvent.TOUCH_MOVE,this.mouseMove,this);
+            this.leaveStage();
             var endTime = new Date().getTime();
             if(endTime - this._downTime > this._deltaTime){
 
@@ -132,6 +129,12 @@ module jftools{
                 _delay = Math.min(_delay,300);
                 egret.Tween.get(this._container,{onChange:this.moveList,onChangeObj:this}).to({x:this._endX,y:this._endY},_delay);
             }
+        }
+        private leaveStage():void{
+            this.removeEventListener(egret.TouchEvent.TOUCH_END,this.mouseUp,this);
+            this.removeEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE,this.mouseUp,this);
+            this.removeEventListener(egret.TouchEvent.TOUCH_MOVE,this.mouseMove,this);
+            //this.stage.removeEventListener(egret.Event.LEAVE_STAGE,this.leaveStage,this);
         }
         //每帧 移动 时调用
         private moveList() {
