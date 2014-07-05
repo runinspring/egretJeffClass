@@ -4,7 +4,7 @@
  * Created by runinspring@gmail.com on ${DATE}.
  */
 module {
-    export class ${NAME} {
+    export class ${NAME} extends {
         constructor() {
             super();
         }

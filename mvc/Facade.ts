@@ -1,9 +1,6 @@
 /**
  * Created by 张宇 runinspring@gmail.com on 14-4-16.
  */
-    /// <reference path="Mediator.ts"/>
-    /// <reference path="Proxy.ts"/>
-    /// <reference path="Command.ts"/>
  module mvc{
     export class Facade{
         public static instance:Facade = null;
