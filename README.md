@@ -8,3 +8,5 @@ https://github.com/PureMVC/puremvc-typescript-standard-framework
 一开始不知道有pureMVC的官方版本，自己花了点时间写的。
 
 2. 安装和卸载egret的工具,win和mac系统的都有
+
+3. egret_file_list生成工具,减少发布后的体积
