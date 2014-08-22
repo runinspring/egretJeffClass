@@ -11,7 +11,7 @@
             this.container = _viewCompmnet;
         }
         public listNotificationInterests():string[]{return [];}
-        public handleNotification(_noteName:string,_body:any):void{}
+        public handleNotification(_note:Notification):void{}
         public onRegister():void{}
 	}
  }

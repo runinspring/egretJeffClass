@@ -7,6 +7,6 @@
         constructor(_body:Facade){
             this.facade = _body;
         }
-	    public excute(_note:Object):void{}
+	    public excute(_note:Notification):void{}
 	}
  }

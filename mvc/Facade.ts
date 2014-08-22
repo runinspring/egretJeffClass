@@ -8,19 +8,29 @@
         public instanceProxy:Object;
         public instanceCommand:Object;
         constructor(){
-            this.instanceMediator = new Object();
-            this.instanceProxy = new Object();
-            this.instanceCommand = new Object();
-            this.initializeController();
+            this.initializeFacade();
+        }
+        public initializeFacade():void
+        {//初始化Facade
+            //console.info("初始化Facade");
         }
         public initializeController():void
         {//初始化command
             //console.info("初始化command");
         }
+        public initializeProxy():void
+        {//初始化proxy
+            //console.info("初始化proxy");
+        }
 		public registerMediator(_target:Mediator):void
         {
             _target.facade = this;
-            this.instanceMediator[_target.mediatorName] = _target;
+            if(!this.instanceMediator){
+                this.instanceMediator = new Object();
+                this.instanceMediator[_target.mediatorName] = _target;
+            }else{
+                this.instanceMediator[_target.mediatorName] = _target;
+            }
             _target.onRegister();
         }
         public retrieveMediator(_name:string):Object
@@ -30,27 +40,37 @@
         public registerProxy(_target:Proxy):void
         {
             _target.facade = this;
-            this.instanceProxy[_target.proxyName] = _target;
+            if(!this.instanceProxy){
+                this.instanceProxy = new Object();
+                this.instanceProxy[_target.proxyName] = _target;
+                this.initializeProxy();
+            }
             _target.onRegister();
+        }
+        public registerCommand(_name:string,_command:Object):void
+        {
+            if(!this.instanceCommand){
+                this.instanceCommand = new Object();
+                this.instanceCommand[_name] = _command;
+                this.initializeController();
+            }else{
+                this.instanceCommand[_name] = _command;
+            }
         }
         public retrieveProxy(_name:string):Object
         {
             return this.instanceProxy[_name];
         }
-        public registerCommand(_name:string,_command:Object):void
+        public sendNotification(_name:string,_note:Object=null,_type:string=null):void
         {
-            this.instanceCommand[_name] = _command;
-        }
-        public sendNotification(_name:string,_note:Object=null):void
-        {
+            var note:Notification = new Notification(_name,_note,_type);
             for(var i in this.instanceMediator){
                 var _mediator = this.instanceMediator[i];
                 var _len = _mediator.listNotificationInterests().length;
-                //console.info("len:",_len,i);
                 if(_len>0){
                     for(var j:number=0;j<_len;j++){
                         if(_mediator.listNotificationInterests()[j] == _name){
-                            _mediator.handleNotification(_name,_note);
+                            _mediator.handleNotification(note)
                             break;
                         }
                     }
@@ -59,7 +79,7 @@
             if(this.instanceCommand[_name]!=null){
                 var commandClassRef = this.instanceCommand[_name];
                 var commandInstance = new commandClassRef(this);
-                commandInstance.excute(_note);
+                commandInstance.excute(note);
             }
         }
 	}
