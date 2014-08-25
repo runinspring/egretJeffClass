@@ -79,7 +79,7 @@
             if(this.instanceCommand[_name]!=null){
                 var commandClassRef = this.instanceCommand[_name];
                 var commandInstance = new commandClassRef(this);
-                commandInstance.excute(note);
+                commandInstance.execute(note);
             }
         }
 	}
