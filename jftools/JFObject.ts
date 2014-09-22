@@ -18,7 +18,7 @@ module jftools{
             }
             return _sp;
         }
-        public static ColorSprite(_wid:number,_hei:number,_color:number=0x000000,_center=true,_allowtouch=false):egret.Sprite{
+        public static ColorSprite(_color:number=0x000000,_wid:number=0,_hei:number=0,_center=true,_allowtouch=false):egret.Sprite{
             var _sp = new egret.Sprite();
             _sp.graphics.beginFill(_color);
             var _sx=0,_sy=0;
