@@ -5,8 +5,8 @@
 	export class Proxy{
 		public proxyName:string;
         public facade:Facade;
-        constructor(_name:string){
-            this.proxyName = _name;
+        constructor(name:string){
+            this.proxyName = name;
         }
         public onRegister():void{}
 	}

@@ -4,9 +4,9 @@
  module mvc{
 	export class Command {
         public facade:Facade;
-        constructor(_body:Facade){
-            this.facade = _body;
+        constructor(body:Facade){
+            this.facade = body;
         }
-	    public execute(_note:Notification):void{}
+	    public execute(note:Notification):void{}
 	}
  }

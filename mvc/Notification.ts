@@ -23,7 +23,7 @@ module mvc{
          * 获取消息名称
          * @returns {string}
          */
-        public get getName():string{
+        public getName():string{
             return this._name;
         }
 
@@ -31,7 +31,7 @@ module mvc{
          * 获取消息内容
          * @returns {Object}
          */
-        public get getBody():Object{
+        public getBody():Object{
             return this._body;
         }
 
@@ -39,7 +39,7 @@ module mvc{
          * 获取消息种类
          * @returns {string}
          */
-        public get getType():string{
+        public getType():string{
             return this._type;
         }
     }
