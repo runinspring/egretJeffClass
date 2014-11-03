@@ -94,6 +94,14 @@ declare module mvc {
          */
         container:egret.DisplayObjectContainer;
         /**
+         * 监听哪些系统消息
+          */
+        listNotificationInterests():string[];
+        /**
+         * 收到监听的系统消息
+         */
+        handleNotification(_note:Notification);
+        /**
          * 注册后自动调用的函数
          */
         onRegister():void;
