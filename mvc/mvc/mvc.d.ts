@@ -56,7 +56,7 @@ declare module mvc {
          * @param _note 消息的内容
          * @param _type 消息的类型
          */
-        public sendNotification(_name:string,_note?:Object,_type?:string):void;
+        sendNotification(_name:string,_note?:Object,_type?:string):void;
     }
 }
 declare module mvc {
@@ -101,7 +101,7 @@ declare module mvc {
         /**
          * 当前的Facade
          */
-        public facade:Facade;
+        facade:Facade;
         /**
          * 执行消息
          * @param note 得到的消息
