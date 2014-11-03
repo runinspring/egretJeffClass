@@ -90,6 +90,10 @@ declare module mvc {
          */
         facade:Facade;
         /**
+         * 默认的容器
+         */
+        container:egret.DisplayObjectContainer;
+        /**
          * 注册后自动调用的函数
          */
         onRegister():void;
