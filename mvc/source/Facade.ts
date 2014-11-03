@@ -47,6 +47,10 @@
             }
             _target.onRegister();
         }
+        public retrieveProxy(_name:string):Object
+        {
+            return this.instanceProxy[_name];
+        }
         public registerCommand(_name:string,_command:Object):void
         {
             if(!this.instanceCommand){
@@ -56,10 +60,6 @@
             }else{
                 this.instanceCommand[_name] = _command;
             }
-        }
-        public retrieveProxy(_name:string):Object
-        {
-            return this.instanceProxy[_name];
         }
         public sendNotification(_name:string,_note:Object=null,_type:string=null):void
         {

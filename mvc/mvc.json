@@ -1,0 +1,6 @@
+{
+  "name": "mvc",
+  "dependence": ["core"],
+  "source":"src/mvc",
+  "file_list": ["Command.js", "Facade.js", "Mediator.js", "Notification.js", "Proxy.js", "mvc.d.ts"]
+}
