@@ -18,10 +18,42 @@ module jftools{
             }
             return _sp;
         }
-        public static ColorSprite(_color:number=0x000000,_wid:number=0,_hei:number=0,_center=true,_allowtouch=false):egret.Sprite{
+
+        /**
+         * 画一个Sprite
+         * @param _color 颜色
+         * @param _wid 宽度
+         * @param _hei 高度
+         * @param _center 是否居中对齐 默认不是
+         * @param _allowtouch 是否可以点击 默认不可以
+         */
+        public static ColorSprite(_color:number=0x000000,_wid:number=0,_hei:number=0,_center:boolean=true,_allowtouch:boolean=false):egret.Sprite{
             var _sp = new egret.Sprite();
             _sp.graphics.beginFill(_color);
-            var _sx=0,_sy=0;
+            _sp.graphics.drawRect(0,0,_wid,_hei);
+            _sp.graphics.endFill();
+            if(_center){
+                _sp.anchorX=_sp.anchorY=0.5;
+            }
+
+            if(_allowtouch==true){
+                _sp.width = _wid; _sp.height = _hei;
+                _sp.touchEnabled=true;
+            }
+            return _sp;
+        }
+
+        /**
+         * 画一个Shape
+         * @param _color 颜色
+         * @param _wid 宽度
+         * @param _hei 高度
+         * @param _center 是否居中对齐 默认不是
+         * @param _allowtouch 是否可以点击 默认不可以
+         */
+        public static ColorShape(_color:number=0x000000,_wid:number=0,_hei:number=0,_center:boolean=false,_allowtouch:boolean=false):egret.Shape{
+            var _sp = new egret.Shape();
+            _sp.graphics.beginFill(_color);
             _sp.graphics.drawRect(0,0,_wid,_hei);
             _sp.graphics.endFill();
             if(_center){
