@@ -9,5 +9,7 @@
             this.proxyName = name;
         }
         public onRegister():void{}
+        public listNotificationInterests():string[]{return [];}
+        public handleNotification(_note:Notification):void{}
 	}
  }

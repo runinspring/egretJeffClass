@@ -22,7 +22,7 @@
         {//初始化proxy
             //console.info("初始化proxy");
         }
-		public registerMediator(_target:Mediator):void
+		public registerMediator(_target:IMediator):void
         {
             _target.facade = this;
             if(!this.instanceMediator){
@@ -64,18 +64,32 @@
         public sendNotification(_name:string,_note:Object=null,_type:string=null):void
         {
             var note:Notification = new Notification(_name,_note,_type);
-            for(var i in this.instanceMediator){
+            var i;var j;
+            for(i in this.instanceMediator){
                 var _mediator = this.instanceMediator[i];
                 var _len = _mediator.listNotificationInterests().length;
                 if(_len>0){
-                    for(var j:number=0;j<_len;j++){
+                    for(j=0;j<_len;j++){
                         if(_mediator.listNotificationInterests()[j] == _name){
-                            _mediator.handleNotification(note)
+                            _mediator.handleNotification(note);
                             break;
                         }
                     }
                 }
             }
+            for(i in this.instanceProxy){
+                var _proxy = this.instanceProxy[i];
+                var _lenp = _proxy.listNotificationInterests().length;
+                if(_lenp>0){
+                    for(j=0;j<_lenp;j++){
+                        if(_proxy.listNotificationInterests()[j] == _name){
+                            _proxy.handleNotification(note);
+                            break;
+                        }
+                    }
+                }
+            }
+
             if(this.instanceCommand[_name]!=null){
                 var commandClassRef = this.instanceCommand[_name];
                 var commandInstance = new commandClassRef(this);

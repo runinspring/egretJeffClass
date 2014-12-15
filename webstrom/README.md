@@ -10,3 +10,6 @@ module {
         }
     }
 }
+
+watchers.xml
+win下自动编译的配置文件
