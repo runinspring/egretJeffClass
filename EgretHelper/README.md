@@ -4,7 +4,7 @@
 ```
 egret启动的时候可以先显示一个logo，是base64的字符串
 把png图片拖拽进指示框内，就会在桌面生成一个对应的txt文件。
-拷贝里面的内容到egret_loader.js替换相应内容
+使用方法参考egret_require.js
 ```
 ### 生成二维码图片
 ```
