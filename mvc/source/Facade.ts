@@ -66,6 +66,11 @@
         public sendNotification(_name:string,_note:Object=null,_type:string=null):void
         {
             var note:Notification = new Notification(_name,_note,_type);
+            if(this.instanceCommand[_name]!=null){
+                var commandClassRef = this.instanceCommand[_name];
+                var commandInstance = new commandClassRef(this);
+                commandInstance.execute(note);
+            }
             var i;var j;
             for(i in this.instanceMediator){
                 var _mediator = this.instanceMediator[i];
@@ -90,12 +95,6 @@
                         }
                     }
                 }
-            }
-
-            if(this.instanceCommand[_name]!=null){
-                var commandClassRef = this.instanceCommand[_name];
-                var commandInstance = new commandClassRef(this);
-                commandInstance.execute(note);
             }
         }
 	}
