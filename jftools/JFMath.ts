@@ -17,9 +17,8 @@ module jftools{
             return _arr.sort(function():number{return Math.random()>.5?1:-1});
         }
         /**数字转换成中文*/
-        public static numToChinese(num:number):string{
-            var strNum:string = num.toString();
-            var arrNum:Array<string> = strNum.split("");
+        public static numberToChinese(num:number):string{
+            var arrNum:Array<string> = num.toString().split("");
             var len:number = arrNum.length;
             var outStr:string="";
             for(var i:number=0;i<len;i++){
