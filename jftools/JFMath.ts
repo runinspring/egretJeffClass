@@ -16,6 +16,10 @@ module jftools{
         public static Shuffle(_arr:any[]):any[] {
             return _arr.sort(function():number{return Math.random()>.5?1:-1});
         }
+        /**克隆数组*/
+        public static arrClon(target:any[]):any[]{
+            return target.slice(0);
+        }
         /**数字转换成中文*/
         public static numberToChinese(num:number):string{
             var arrNum:Array<string> = num.toString().split("");
