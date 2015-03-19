@@ -17,7 +17,7 @@ module jftools{
             return _arr.sort(function():number{return Math.random()>.5?1:-1});
         }
         /**克隆数组*/
-        public static arrClon(target:any[]):any[]{
+        public static arrClone(target:any[]):any[]{
             return target.slice(0);
         }
         /**数字转换成中文*/
