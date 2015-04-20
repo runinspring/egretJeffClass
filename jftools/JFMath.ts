@@ -20,6 +20,18 @@ module jftools{
         public static arrClone(target:any[]):any[]{
             return target.slice(0);
         }
+        /**从数组中随机取一个值
+        * @param _arr 目标数组
+        * @param _cut 是否剪切原数组
+        */
+        public static randomArr(_arr:any[],_cut:boolean=false):any{
+          var max:number = _arr.length-1;
+          var ran:number = JFMath.random(max);
+          var target:any[];
+          if(!_cut)target = _arr.slice(ran,ran+1);//不剪切原数组
+          else target = _arr.splice(ran,1);//剪切原数组
+          return target[0];
+        }
         /**数字转换成中文*/
         public static numberToChinese(num:number):string{
             var arrNum:Array<string> = num.toString().split("");
