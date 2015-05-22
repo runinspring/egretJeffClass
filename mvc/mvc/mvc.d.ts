@@ -28,7 +28,7 @@ declare module mvc {
          * 注册Mediator
          * @param _target 要注册的对象
          */
-        registerMediator(_target:Mediator):void;
+        registerMediator(_target:IMediator):void;
         /**
          * 取出Mediator
          * @param _name 要取出的对象的名字
@@ -58,8 +58,6 @@ declare module mvc {
          */
         sendNotification(_name:string,_note?:Object,_type?:string):void;
     }
-}
-declare module mvc {
     class Proxy {
         /**
          * 当前的facade
@@ -76,9 +74,10 @@ declare module mvc {
          */
         onRegister():void;
     }
-}
-declare module mvc {
-    class Mediator {
+    interface IMediator{
+
+    }
+    class Mediator implements IMediator{
         /**
          * 构造函数
          * @param _name 名称
@@ -102,8 +101,6 @@ declare module mvc {
          */
         onRegister():void;
     }
-}
-declare module mvc {
     class Command {
         constructor(body:Facade);
         /**
@@ -116,8 +113,7 @@ declare module mvc {
          */
         execute(note:Notification):void;
     }
-}
-declare module mvc {
+
     class Notification {
         /**
          * 获取消息的名称
