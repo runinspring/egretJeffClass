@@ -90,10 +90,6 @@ declare module mvc {
          */
         facade:Facade;
         /**
-         * 默认的容器
-         */
-        container:egret.DisplayObjectContainer;
-        /**
          * 监听哪些系统消息
           */
         listNotificationInterests():string[];
