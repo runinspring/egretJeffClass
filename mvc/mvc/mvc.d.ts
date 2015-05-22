@@ -75,7 +75,7 @@ declare module mvc {
         onRegister():void;
     }
     interface IMediator{
-
+      onRegister():void;
     }
     class Mediator implements IMediator{
         /**
@@ -83,7 +83,7 @@ declare module mvc {
          * @param _name 名称
          * @param _viewCompmnet 注册的对象
          */
-        constructor(_name:string,_viewCompmnet);
+        constructor(_name:string);
         /**
          * 当前的Facade
          */
